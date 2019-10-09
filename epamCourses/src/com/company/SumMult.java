@@ -10,6 +10,7 @@ class SumMult {
         while (input.hasNextInt()){
              res += input.nextInt();
         }
+        input.close();
         System.out.print("Result: " + res);
     }
 }

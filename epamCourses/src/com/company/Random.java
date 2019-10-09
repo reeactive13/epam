@@ -7,6 +7,7 @@ class Random {
         System.out.println("Enter number: ");
         Scanner input = new Scanner(System.in);
         int quantity = input.nextInt();
+        input.close();
         for (int i = 0; i < quantity; i++) {
             System.out.print(((int) (Math.random() * 100)) + " ");
         }
