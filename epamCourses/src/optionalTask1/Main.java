@@ -13,11 +13,13 @@ public class Main {
         while (input.hasNextInt()) {
             array.add(input.nextInt());
         }
-        System.out.printf("Shortest: %d%n", findFirstShortest(array));
-        System.out.printf("Longest: %d%n", findFirstLongest(array));
-        sortByLength();
-        printLengthMoreThenAvg();
-        System.out.println(countUniqueDigits(array));
+        //System.out.printf("Shortest: %d%n", findFirstShortest(array));
+        //System.out.printf("Longest: %d (%d)%n", findFirstLongest(array), String.valueOf(findFirstLongest(array)).length());
+        //sortByLength();
+        //printLengthMoreThenAvg();
+        //System.out.printf("Number with the least number of unique digits: %d%n", countUniqueDigits(array));
+        //System.out.println(findOnlyEven(array));
+        System.out.println(findAscNumber(array));
     }
 
     private static int findFirstShortest(List<Integer> list) {
@@ -72,18 +74,62 @@ public class Main {
         int result = 0;
         int min = String.valueOf(findFirstLongest(list)).length();
         for (int number : list) {
-            char[] chars = String.valueOf(number).toCharArray();
+            char[] digits = String.valueOf(number).toCharArray();
             List<Character> uniqueDigits = new ArrayList<>();
-            for (char digit : chars) {
+            for (char digit : digits) {
                 if (!uniqueDigits.contains(digit)) {
                     uniqueDigits.add(digit);
                 }
             }
-            if (uniqueDigits.size()<min){
+            if (uniqueDigits.size() < min) {
                 min = uniqueDigits.size();
                 result = number;
             }
         }
         return result;
+    }
+
+    private static String findOnlyEven(List<Integer> list) {
+        int evenOnlyCounter = 0;
+        int evenEqualsNonEvenCounter = 0;
+        for (int number : list) {
+            int even = 0;
+            int notEven = 0;
+            char[] digits = String.valueOf(number).toCharArray();
+            for (char digit : digits) {
+                if (digit % 2 == 0) {
+                    even++;
+                } else {
+                    notEven++;
+                }
+            }
+            if (even == String.valueOf(number).length()) {
+                evenOnlyCounter++;
+            }
+            if (even == notEven) {
+                evenEqualsNonEvenCounter++;
+            }
+        }
+        return String.format("Numbers with only even digits: %s. Equal number of even and not even digits: %s", String.valueOf(evenOnlyCounter), String.valueOf(evenEqualsNonEvenCounter));
+    }
+
+     private static int findAscNumber(List<Integer> list) {
+        for (int number : list) {
+            int digitInt = 0;
+            int counter = 0;
+            char[] digits = String.valueOf(number).toCharArray();
+
+            for (char digit : digits) {
+                if (digitInt < digit) {
+                    digitInt = digit;
+                    counter++;
+                }
+                if (counter== String.valueOf(number).length())
+                {
+                    return number;
+                }
+            }
+        }
+        return 0;
     }
 }
