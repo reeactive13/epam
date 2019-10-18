@@ -113,7 +113,7 @@ public class Main {
         return String.format("Numbers with only even digits: %s. Equal number of even and not even digits: %s", String.valueOf(evenOnlyCounter), String.valueOf(evenEqualsNonEvenCounter));
     }
 
-     private static int findAscNumber(List<Integer> list) {
+    private static int findAscNumber(List<Integer> list) {
         for (int number : list) {
             int digitInt = 0;
             int counter = 0;
@@ -124,8 +124,7 @@ public class Main {
                     digitInt = digit;
                     counter++;
                 }
-                if (counter== String.valueOf(number).length())
-                {
+                if (counter == String.valueOf(number).length()) {
                     return number;
                 }
             }
