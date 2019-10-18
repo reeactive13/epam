@@ -5,15 +5,21 @@ import java.time.Year;
 public class Book {
     private int id;
     private String name;
+    private String author;
     private Year year;
     private String publishingHouse;
     private int pages;
     private int price;
     private String coverType;
 
-    public Book(int id, String name, Year year, String publishingHouse, int pages, int price, String coverType) {
+    public Book() {
+
+    }
+
+    public Book(int id, String name, String author, Year year, String publishingHouse, int pages, int price, String coverType) {
         this.id = id;
         this.name = name;
+        this.author = author;
         this.year = year;
         this.publishingHouse = publishingHouse;
         this.pages = pages;
@@ -26,12 +32,28 @@ public class Book {
         return String.format("Name: %s, year: %s", this.name, this.year);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Year getYear() {
@@ -77,4 +99,6 @@ public class Book {
     public void setCoverType(String coverType) {
         this.coverType = coverType;
     }
+
+
 }
